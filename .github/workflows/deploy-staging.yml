@@ -41,6 +41,8 @@ jobs:
         with:
           name: webpack artifacts
           path: public
+          run-id: ${{ github.event.workflow_run.id }}
+          
 
       - name: Log in to GHCR
         uses: docker/login-action@v3
