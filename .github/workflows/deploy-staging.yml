@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, stage)
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
     runs-on: ubuntu-latest
 
     steps:
@@ -41,6 +41,8 @@ jobs:
         with:
           name: webpack artifacts
           path: public
+          run-id: ${{ github.event.workflow_run.id }}
+          
 
       - name: Log in to GHCR
         uses: docker/login-action@v3
